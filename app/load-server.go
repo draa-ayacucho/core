@@ -3,7 +3,6 @@ package app
 import (
 	"context"
 	"fmt"
-	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 	"time"
@@ -19,7 +18,6 @@ const (
 
 // getServer Obtain the server with additional configurations
 func (a *App) getServer() *http.Server {
-	a.router = mux.NewRouter()
 	return &http.Server{
 		Handler: http.TimeoutHandler(a.router, handlerTimeout, "Timeout!"),
 		Addr: fmt.Sprintf(

@@ -14,20 +14,27 @@ type App struct {
 	router    *mux.Router
 	variables config.VariableConfig
 	newLogger logger.NewLogger
+	storage   func()
+	route     func()
 }
 
-// Storage Loads the type of storage on the app
-func (a *App) Storage() {}
-
-// Route Loads the routes on the app
-func (a *App) Route() {}
+// NewApp Create a new App instance
+func NewApp(ia IAppLoader) *App {
+	return &App{
+		router:    mux.NewRouter(),
+		variables: config.VariableConfig{},
+		newLogger: logger.NewLogger{},
+		storage:   ia.Storage,
+		route:     ia.Route,
+	}
+}
 
 // Initialize Sets the initial configuration for the app
 func (a *App) Initialize() {
 	a.loadVariable()
 	a.loadLogger()
-	a.Storage()
-	a.Route()
+	a.storage()
+	a.route()
 }
 
 // Run Starts the http server
