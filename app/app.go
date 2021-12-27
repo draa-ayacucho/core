@@ -13,14 +13,7 @@ import (
 type App struct {
 	router    *mux.Router
 	variables config.VariableConfig
-	newLogger *logger.NewLogger
-}
-
-// NewApp Create a new instance of the App
-func NewApp() *App {
-	return &App{
-		router: mux.NewRouter(),
-	}
+	newLogger logger.NewLogger
 }
 
 // Storage Loads the type of storage on the app
@@ -50,7 +43,7 @@ func (a *App) Run() {
 		cancel()
 	}()
 
-	if err := a.Server(ctxCancel); err != nil {
+	if err := a.loadServer(ctxCancel); err != nil {
 		a.newLogger.ErrorLogger.Printf("failed to serve: %v\n", err)
 	}
 }

@@ -3,6 +3,7 @@ package app
 import (
 	"context"
 	"fmt"
+	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 	"time"
@@ -18,6 +19,7 @@ const (
 
 // getServer Obtain the server with additional configurations
 func (a *App) getServer() *http.Server {
+	a.router = mux.NewRouter()
 	return &http.Server{
 		Handler: http.TimeoutHandler(a.router, handlerTimeout, "Timeout!"),
 		Addr: fmt.Sprintf(
@@ -31,7 +33,7 @@ func (a *App) getServer() *http.Server {
 }
 
 // Server Creates the main HTTP server
-func (a *App) Server(ctx context.Context) (err error) {
+func (a *App) loadServer(ctx context.Context) (err error) {
 	srv := a.getServer()
 
 	go func() {
