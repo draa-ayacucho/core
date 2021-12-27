@@ -19,8 +19,7 @@ type App struct {
 // NewApp Create a new instance of the App
 func NewApp() *App {
 	return &App{
-		router:    mux.NewRouter(),
-		newLogger: &logger.NewLogger{},
+		router: mux.NewRouter(),
 	}
 }
 
@@ -32,8 +31,8 @@ func (a *App) Route() {}
 
 // Initialize Sets the initial configuration for the app
 func (a *App) Initialize() {
-	a.Variable()
-	a.Logger()
+	a.loadVariable()
+	a.loadLogger()
 	a.Storage()
 	a.Route()
 }

@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func (a *App) Variable() {
+func (a *App) loadVariable() {
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("error loading .env file")
@@ -15,10 +15,6 @@ func (a *App) Variable() {
 	switch os.Getenv("GLOBAL_ENV") {
 	case "develop":
 		a.variables = *config.NewVariableConfig(config.Environment{})
-	case "production":
-		// The config.AwsSecretsManager{} (not implemented jet)
-		// a.variables = *config.NewVariableConfig(config.AwsSecretsManager{})
-		fallthrough
 	default:
 		log.Fatal("variable GLOBAL_ENV not set")
 	}
