@@ -11,7 +11,7 @@ import (
 )
 
 type App struct {
-	router    *mux.Router
+	Router    *mux.Router
 	variables config.VariableConfig
 	newLogger logger.NewLogger
 	storage   func()
@@ -21,7 +21,7 @@ type App struct {
 // NewApp Create a new App instance
 func NewApp(ia IAppLoader) *App {
 	return &App{
-		router:    mux.NewRouter(),
+		Router:    mux.NewRouter(),
 		variables: config.VariableConfig{},
 		newLogger: logger.NewLogger{},
 		storage:   ia.Storage,

@@ -19,7 +19,7 @@ const (
 // getServer Obtain the server with additional configurations
 func (a *App) getServer() *http.Server {
 	return &http.Server{
-		Handler: http.TimeoutHandler(a.router, handlerTimeout, "Timeout!"),
+		Handler: http.TimeoutHandler(a.Router, handlerTimeout, "Timeout!"),
 		Addr: fmt.Sprintf(
 			":%s",
 			a.variables.App.Port,
