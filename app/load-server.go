@@ -11,15 +11,15 @@ import (
 const (
 	writeTimeout    = 2 * time.Second
 	readTimeout     = 2 * time.Second
+	idleTimeout     = 10 * time.Second
 	handlerTimeout  = 2 * time.Second
 	shutdownTimeout = 5 * time.Second
-	idleTimeout     = 10 * time.Second
 )
 
 // getServer Obtain the server with additional configurations
 func (a *App) getServer() *http.Server {
 	return &http.Server{
-		Handler: http.TimeoutHandler(a.Router, handlerTimeout, "Timeout!"),
+		Handler: http.TimeoutHandler(a.router, handlerTimeout, "Timeout!"),
 		Addr: fmt.Sprintf(
 			":%s",
 			a.variables.App.Port,
