@@ -21,7 +21,6 @@ type App struct {
 // NewApp Create a new App instance
 func NewApp(l *Loader) *App {
 	return &App{
-		router:    gin.Default(),
 		variables: config.VariableConfig{},
 		newLogger: logger.NewLogger{},
 		loader:    l,
@@ -42,8 +41,11 @@ func (a *App) loadLogger() {
 	a.newLogger.Init(a.variables)
 }
 
+func (a *App) loadStorage() {}
+
 func (a *App) loadRoute() {
-	for _, l := range a.loader.GinRouteLoader {
+	a.router = gin.New()
+	for _, l := range a.loader.GinRoute {
 		switch l.Method {
 		case http.MethodGet:
 			a.router.GET(l.Path, l.Handler)
@@ -54,8 +56,6 @@ func (a *App) loadRoute() {
 		}
 	}
 }
-
-func (a *App) loadStorage() {}
 
 // Initialize Sets the initial configuration for the app
 func (a *App) Initialize() {
