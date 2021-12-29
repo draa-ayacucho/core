@@ -4,7 +4,7 @@ import "github.com/gin-gonic/gin"
 
 type Loader struct {
 	GinRouteLoader []GinRouteLoader
-	StorageLoader  StorageLoader
+	StorageLoader  []StorageLoader
 }
 
 type GinRouteLoader struct {
