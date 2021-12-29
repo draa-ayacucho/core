@@ -47,7 +47,7 @@ func (a *App) loadLogger() {
 }
 
 func (a *App) loadRoute() {
-	for _, l := range a.loader.ginRouteLoader {
+	for _, l := range a.loader.GinRouteLoader {
 		switch l.Method {
 		case http.MethodGet:
 			a.router.GET(l.Path, l.Handler)

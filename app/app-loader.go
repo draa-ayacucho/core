@@ -3,8 +3,8 @@ package app
 import "github.com/gin-gonic/gin"
 
 type Loader struct {
-	ginRouteLoader []GinRouteLoader
-	storageLoader  StorageLoader
+	GinRouteLoader []GinRouteLoader
+	StorageLoader  StorageLoader
 }
 
 type GinRouteLoader struct {
