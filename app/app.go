@@ -15,13 +15,13 @@ type App struct {
 	router    *gin.Engine
 	variables config.VariableConfig
 	newLogger logger.NewLogger
-	loader    Loader
+	loader    *Loader
 	//storage   func()
 	//route     func()
 }
 
 // NewApp Create a new App instance
-func NewApp(l Loader) *App {
+func NewApp(l *Loader) *App {
 	return &App{
 		router:    gin.Default(),
 		variables: config.VariableConfig{},
