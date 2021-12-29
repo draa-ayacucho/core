@@ -16,8 +16,6 @@ type App struct {
 	variables config.VariableConfig
 	newLogger logger.NewLogger
 	loader    *Loader
-	//storage   func()
-	//route     func()
 }
 
 // NewApp Create a new App instance
@@ -27,8 +25,6 @@ func NewApp(l *Loader) *App {
 		variables: config.VariableConfig{},
 		newLogger: logger.NewLogger{},
 		loader:    l,
-		//storage:   ia.Storage,
-		//route:     ia.Route,
 	}
 }
 

@@ -18,7 +18,7 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pascaldekloe/jwt v1.10.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/stretchr/objx v0.1.0 // indirect
+	github.com/stretchr/objx v0.3.0 // indirect
 	github.com/stretchr/testify v1.7.0 // indirect
 	github.com/ugorji/go/codec v1.2.6 // indirect
 	golang.org/x/crypto v0.0.0-20211215153901-e495a2d5b3d3 // indirect
