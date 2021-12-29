@@ -13,13 +13,12 @@ func (a *App) loadVariable() {
 	if err != nil {
 		log.Fatal("error loading .env file")
 	}
-
-	gin.SetMode(os.Getenv("GIN_MODE"))
-
 	switch os.Getenv("GLOBAL_ENV") {
 	case "develop":
+		gin.SetMode(gin.DebugMode)
 		a.variables = *config.NewVariableConfig(config.Environment{})
 	case "production":
+		gin.SetMode(gin.ReleaseMode)
 		a.variables = *config.NewVariableConfig(config.Environment{})
 	default:
 		log.Fatal("variable GLOBAL_ENV not set")
