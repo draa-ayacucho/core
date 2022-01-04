@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/draa-ayacucho/core/config"
+	"github.com/draa-ayacucho/core/configs"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"log"
@@ -16,10 +16,10 @@ func (a *App) loadVariable() {
 	switch os.Getenv("GLOBAL_ENV") {
 	case "develop":
 		gin.SetMode(gin.DebugMode)
-		a.variables = *config.NewVariableConfig(config.Environment{})
+		a.variables = *configs.NewVariableConfig(configs.Environment{})
 	case "production":
 		gin.SetMode(gin.ReleaseMode)
-		a.variables = *config.NewVariableConfig(config.Environment{})
+		a.variables = *configs.NewVariableConfig(configs.Environment{})
 	default:
 		log.Fatal("variable GLOBAL_ENV not set")
 	}

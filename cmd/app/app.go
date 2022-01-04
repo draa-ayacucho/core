@@ -2,8 +2,8 @@ package app
 
 import (
 	"context"
-	"github.com/draa-ayacucho/core/config"
-	"github.com/draa-ayacucho/core/logger"
+	"github.com/draa-ayacucho/core/cmd/app/logger"
+	"github.com/draa-ayacucho/core/configs"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"os"
@@ -13,7 +13,7 @@ import (
 
 type App struct {
 	router    *gin.Engine
-	variables config.VariableConfig
+	variables configs.VariableConfig
 	newLogger logger.NewLogger
 	loader    *Loader
 }
@@ -21,14 +21,14 @@ type App struct {
 // NewApp Create a new App instance
 func NewApp(l *Loader) *App {
 	return &App{
-		variables: config.VariableConfig{},
+		variables: configs.VariableConfig{},
 		newLogger: logger.NewLogger{},
 		loader:    l,
 	}
 }
 
 // Variable Get app variables information
-func (a *App) Variable() config.VariableConfig {
+func (a *App) Variable() configs.VariableConfig {
 	return a.variables
 }
 

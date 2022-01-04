@@ -1,4 +1,4 @@
-package config
+package configs
 
 // iConfiguration created to get environment variables from different fonts
 type iConfiguration interface {

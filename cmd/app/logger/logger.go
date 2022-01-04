@@ -2,7 +2,7 @@ package logger
 
 import (
 	"fmt"
-	"github.com/draa-ayacucho/core/config"
+	"github.com/draa-ayacucho/core/configs"
 	"log"
 	"os"
 	"time"
@@ -14,7 +14,7 @@ type NewLogger struct {
 	ErrorLogger   *log.Logger
 }
 
-func (l *NewLogger) Init(v config.VariableConfig) {
+func (l *NewLogger) Init(v configs.VariableConfig) {
 	t := time.Now()
 	file, err := os.OpenFile(
 		fmt.Sprintf(
